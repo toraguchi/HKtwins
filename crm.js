@@ -175,6 +175,7 @@ function populateCompanies(userLocation) {
             phoneNumber: phoneNumberInput.value || "ー",
             deadline: deadlineValue ? new Date(deadlineValue).toISOString() : "ー", // ISO形式で保存
         };
+        
 
         // ローカルストレージから案件リストを取得
         const savedCases = JSON.parse(localStorage.getItem("savedCases")) || [];
