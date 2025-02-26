@@ -189,17 +189,17 @@ function calculateDistances(userLocation) {
             travelMode: google.maps.TravelMode.DRIVING
         },
         (response, status) => {
-            if (status === google.maps.DistanceMatrixStatus.OK) {
+            if (status === "OK") {
                 const results = response.rows[0].elements;
                 companies.forEach((company, index) => {
                     company.distance = results[index].distance.value; // 距離（メートル）
                     company.duration = results[index].duration.text; // 移動時間（テキスト）
                 });
 
-                // 距離順に並べ替え
+                // 企業リストを距離順にソート
                 companies.sort((a, b) => a.distance - b.distance);
 
-                // 最新の企業情報を表示
+                // **企業リストを表示**
                 displayCompanies(userLocation);
             } else {
                 // エラー詳細のログを表示
@@ -311,8 +311,6 @@ function openRoute(companyName, userLat, userLng) {
     // 新しいタブでGoogleマップを開く
     window.open(googleMapsURL, '_blank');
 }
-
-
 
 // 初期化
 window.onload = () => {
